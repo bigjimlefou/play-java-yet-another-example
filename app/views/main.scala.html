@@ -1,24 +1,81 @@
-@*
- * This template is called from the `index` template. This template
- * handles the rendering of the page header and body tags. It takes
- * two arguments, a `String` for the title of the page and an `Html`
- * object to insert into the body of the page.
- *@
-@(title: String)(content: Html)
+@this(main_footer: views.html.main_footer,main_sidebar: views.html.main_sidebar,main_navbar: views.html.main_navbar)
+@(profile: org.pac4j.core.profile.CommonProfile,currentside: String,title: String, scripts: Html = Html(""), csss: Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @* Here's where we render the page title `String`. *@
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
-    </head>
-    <body>
-        @* And here's where we render the `Html` object containing
-         * the page content. *@
-        @content
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+        <title>WebAccisLTE | @title</title>
+
+            <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","vendor/AdminLTE/plugins/fontawesome-free/css/all.min.css")">
+            <!-- IonIcons -->
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+            <!-- Theme style -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","vendor/AdminLTE/dist/css/adminlte.min.css")">
+            <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+            <!-- Google Font: Source Sans Pro -->
+        <link rel="icon" type="image/png" href="@routes.Assets.at("/public","images/WebAccisLTELogo.png")">
+            <!-- WebAccisLTE CSS -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","stylesheets/main.css")">
+            <!-- Page-Level Plugin CSS -->
+        @csss
+    </head>
+        <!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to to the body tag
+to get the desired effect
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <div class="wrapper">
+                <!-- Navbar -->
+@main_navbar(profile)
+                <!-- /.navbar -->
+
+                <!-- Main Sidebar Container -->
+@main_sidebar(profile,currentside)
+                <!-- /.Main Sidebar Container -->
+
+                <!-- Content Wrapper. Contains page content -->
+@content
+                <!-- /.content-wrapper -->
+
+                <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+            </aside>
+                <!-- /.control-sidebar -->
+
+                <!-- Main Footer -->
+@main_footer()
+                <!-- /.Main Footer -->
+        </div>
+            <!-- ./wrapper -->
+
+            <!-- REQUIRED SCRIPTS -->
+
+            <!-- jQuery -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/plugins/jquery/jquery.min.js")"></script>
+            <!-- Bootstrap -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
+            <!-- AdminLTE -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/dist/js/adminlte.js")"></script>
+            <!-- Main app javascripts -->
+        <script src="@routes.Assets.at("/public","javascripts/main.js")"></script>
+            <!-- Play's Javascript Router -->
+        <script type="text/javascript" src="@routes.ApplicationController.javascriptRoutes"></script>
+
+            <!-- Page-Level javascript -->
+        @scripts
     </body>
 </html>

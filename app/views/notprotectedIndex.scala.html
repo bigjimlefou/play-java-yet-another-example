@@ -1,0 +1,7 @@
+@(profileList: java.util.List[org.pac4j.oidc.profile.keycloak.KeycloakOidcProfile])
+@import scala.collection.JavaConverters._
+@profiles() = { @profileList.toList }
+<h1>Not protected area</h1>
+<a href="..">Back</a><br />
+<br /><br />
+profiles: @profiles<br />

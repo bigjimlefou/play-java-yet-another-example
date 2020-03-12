@@ -1,0 +1,55 @@
+@()
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>WebAccisLTE | Erreur 403</title>
+            <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","vendor/AdminLTE/plugins/fontawesome-free/css/all.min.css")">
+            <!-- IonIcons -->
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+            <!-- Theme style -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","vendor/AdminLTE/dist/css/adminlte.min.css")">
+            <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+        <link rel="icon" type="image/png" href="@routes.Assets.at("/public","images/WebAccisLTELogo.png")">
+            <!-- WebAccisLTE CSS -->
+        <link rel="stylesheet" href="@routes.Assets.at("/public","stylesheets/main.css")">
+    </head>
+    <body class="hold-transition lockscreen">
+        <div class="error-page">
+            <h2 class="headline text-danger">403</h2>
+
+            <div class="error-content">
+                <h3><i class="fas fa-exclamation-triangle text-danger"></i> Accès refusé/interdit.</h3>
+
+                <p>
+                    Il semblerais que vous essayez d'accéder à une zone qui vous est interdite.
+                    Vous pouvez soit <a href="@controllers.user.routes.UserController.myPage()">retourner à l'accueil</a>
+                </p>
+
+                <div class="text-center">
+                    <a href="@routes.CentralLogoutController.logout()">Ou bien vous reconnecter avec un utilisateur différent</a>
+                </div>
+            </div>
+        </div>
+            <!-- /.error-page -->
+
+            <!-- REQUIRED SCRIPTS -->
+
+            <!-- jQuery -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/plugins/jquery/jquery.min.js")"></script>
+            <!-- Bootstrap -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
+            <!-- AdminLTE -->
+        <script src="@routes.Assets.at("/public","vendor/AdminLTE/dist/js/adminlte.js")"></script>
+            <!-- Main app javascripts -->
+        <script src="@routes.Assets.at("/public","javascripts/main.js")"></script>
+    </body>
+</html>

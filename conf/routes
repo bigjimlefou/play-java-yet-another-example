@@ -3,7 +3,39 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.ApplicationController.index(request: Request)
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+## My User
+# ~~~~~
+### NoDocs ###
+GET         /mypage                       controllers.user.UserController.myPage(request: Request)
+
+# Play-pac4j
+# ~~~~~
+### NoDocs ###
+GET         /callback                     @org.pac4j.play.CallbackController.callback(request: Request)
+### NoDocs ###
+POST        /callback                     @org.pac4j.play.CallbackController.callback(request: Request)
+### NoDocs ###
+GET         /casProxyCallback             @org.pac4j.play.CallbackController.callback(request: Request)
+### NoDocs ###
+POST        /casProxyCallback             @org.pac4j.play.CallbackController.callback(request: Request)
+### NoDocs ###
+GET         /logout                       @org.pac4j.play.LogoutController.logout(request: Request)
+### NoDocs ###
+GET         /centralLogout                controllers.CentralLogoutController.logout(request: Request)
+
+## Javascript router
+# ~~~~~
+### NoDocs ###
+GET         /javascriptRoutes             controllers.ApplicationController.javascriptRoutes(request: Request)
+
+# Swagger-ui
+# ~~~~~
+### NoDocs ###
+GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+## Map static resources from the /public folder to the /assets URL path
+# ~~~~~
+### NoDocs ###
+GET         /assets/*file                 controllers.Assets.at(path="/public", file)
